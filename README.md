@@ -70,13 +70,13 @@ Implementation with Z3's optimization of multiple objectives combined using Pare
 
 ## MIP and CP
 
-Both MIP and CP optimization are implemented by getting a satisfiable solution first and add new constraints Iteratively until there is not satisfiable solution.
+Both MIP and CP optimization are implemented by getting a satisfiable solution first and add new constraints Iteratively until there is not feasible solution.
 
-Let $P$ be a set of constraints of the problem. Let $M(P)$ be the satisfiable solution of $P$. Maintain a solution set $S$ throughout the process. 
+Let <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a> be a set of constraints of the problem. Let <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;M(P)" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;M(P)" title="M(P)" /></a> be the satisfiable solution of <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a>. Maintain a solution set <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;S" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;S" title="S" /></a> throughout the process. 
 
 For each iteration:
 
-- get a satisfiable solution $s=M(P)$. If there is not satisfiable solution, break iteration.
-- update $S$ (remove all elements $e$ in $S$ if $\forall o\in \text{objectives},{s[o]<e[o]}$). 
-- add a new constraint $\and_{e\in S}({\or_{o \in \text{objectives}}}o<e[o])$ to $P$.
+- get a satisfiable solution <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;s=M(P)" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;s=M(P)" title="s=M(P)" /></a>. If there is no feasible solution, break iteration.
+- update <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;S" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;S" title="S" /></a> (remove all elements <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;e" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;e" title="e" /></a> in <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;S" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;S" title="S" /></a> if <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\forall&space;o\in&space;\text{objectives},{s[o]<e[o]}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\forall&space;o\in&space;\text{objectives},{s[o]<e[o]}" title="\forall o\in \text{objectives},{s[o]<e[o]}" /></a>). 
+- add a new constraint <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\bigwedge_{e\in&space;S}({\bigvee_{o&space;\in&space;\text{objectives}}}o<e[o])" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\bigwedge_{e\in&space;S}({\bigvee_{o&space;\in&space;\text{objectives}}}o<e[o])" title="\bigwedge_{e\in S}({\bigvee_{o \in \text{objectives}}}o<e[o])" /></a> to <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a>.
 
