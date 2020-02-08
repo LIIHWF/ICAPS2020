@@ -8,7 +8,7 @@
 - [DOcplex](http://ibmdecisionoptimization.github.io/docplex-doc/) (`pip install docplex`)
 - CPLEX 12.9.0 (with `oplrun` and `cpoptimizer`)
 
-**Z3 python API has been modified**, the new one can download [here](https://github.com/LIIHWF/ICAPS2020/releases/download/z3local/z3local.zip), `Z3_Pareto.py` should be placed in the same directory as `z3local` and `libz3.so`.
+**Z3 python API has been modified**. The correct version can be downloaded [here](https://github.com/LIIHWF/ICAPS2020/releases/download/z3local/z3local.zip). `Z3_Pareto.py` should be placed in the same directory as `z3local` and `libz3.so`.
 
 ## Instructions for solving
 
@@ -68,11 +68,11 @@ $ python3 cp_pareto.py 4_2x2_m
 
 Implementation with Z3's optimization of multiple objectives combined using Pareto fronts.
 
-## MIP and CP
+### MIP and CP
 
-Both MIP and CP optimization are implemented by getting a satisfiable solution first and add new constraints Iteratively until there is not feasible solution.
+Both MIP and CP optimization are implemented by getting a feasible solution first and add new constraints Iteratively until there is no feasible solution.
 
-Let <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a> be a set of constraints of the problem. Let <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;M(P)" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;M(P)" title="M(P)" /></a> be the satisfiable solution of <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a>. Maintain a solution set <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;S" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;S" title="S" /></a> throughout the process. 
+Let <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a> be a set of constraints of the problem. Let <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;M(P)" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;M(P)" title="M(P)" /></a> be a solution of <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;P" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;P" title="P" /></a>. Maintain a solution set <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;S" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\inline&space;S" title="S" /></a> throughout the process. 
 
 For each iteration:
 
